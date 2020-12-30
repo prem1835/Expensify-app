@@ -1,5 +1,5 @@
 import { createStore, combineReducers } from "redux";
-import { v4 as uuidv4 } from "uuid";
+import uuid from "uuid";
 
 // ADD_EXPENSE
 const addExpense = ({
@@ -10,7 +10,7 @@ const addExpense = ({
 } = {}) => ({
   type: "ADD_EXPENSE",
   expense: {
-    id: uuidv4(),
+    id: uuid(),
     description,
     note,
     amount,
@@ -165,7 +165,7 @@ store.subscribe(() => {
 });
 
 const expenseOne = store.dispatch(
-  addExpense({ description: "Rent", amount: 100, createdAt: 1000 })
+  addExpense({ description: "Rent", amount: 100, createdAt: -21000 })
 );
 const expenseTwo = store.dispatch(
   addExpense({ description: "Coffee", amount: 300, createdAt: -1000 })
@@ -174,10 +174,10 @@ const expenseTwo = store.dispatch(
 // store.dispatch(removeExpense({ id: expenseOne.expense.id }));
 // store.dispatch(editExpense(expenseTwo.expense.id, { amount: 500 }));
 
-store.dispatch(setTextFilter("rent"));
+// store.dispatch(setTextFilter('ffe'));
 // store.dispatch(setTextFilter());
 
-// store.dispatch(sortByAmount());
+store.dispatch(sortByAmount());
 // store.dispatch(sortByDate());
 
 // store.dispatch(setStartDate(0)); // startDate 125
